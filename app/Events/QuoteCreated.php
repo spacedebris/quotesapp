@@ -18,11 +18,8 @@ class QuoteCreated extends Event
      */
     public function __construct($author)
     {
-        \Debugbar::info($author->name);
-        $this->author_name = $author->name;
+        $this->author_name = $author;
         $this->auhor_email = $author->email;
-        
-
     }
 
     /**
