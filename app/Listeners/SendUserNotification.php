@@ -6,6 +6,7 @@ use App\Events\QuoteCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
+use App\Author;
 
 class SendUserNotification
 {
@@ -30,10 +31,10 @@ class SendUserNotification
         $author = $event->author_name;
         $email = $event->author_email;
 
-        Mail::send('email.user_notification', ['name' => $author->name], function($message) use ($email, $author){
+        Mail::send('email.user_notification', ['name' => $author], function($message) use ($email, $author){
             $message->from('kontakt@kozlowskimarek.pl', 'Admin');
-            $message->to($email, $author->name);
+            $message->to($email, $author);
             $message->subject('Thank you for your time@quotesapp');
-        })
+        });
     }
 }

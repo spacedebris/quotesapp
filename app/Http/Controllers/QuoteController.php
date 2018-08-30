@@ -48,7 +48,7 @@ class QuoteController extends Controller
     		$quote->quote = $quoteText;
     		$author->quotes()->save($quote); 
 
-            Event::fire(new QuoteCreated($author->name));
+            Event::fire(new QuoteCreated($author));
 
     		return redirect()->route('index')->with([
     			'success' => 'Quote saved'

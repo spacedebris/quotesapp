@@ -18,8 +18,8 @@ class QuoteCreated extends Event
      */
     public function __construct($author)
     {
-        $this->author_name = $author;
-        $this->auhor_email = $author->email;
+        $this->author_name = $author->name;
+        $this->author_email = $author->email;
     }
 
     /**
